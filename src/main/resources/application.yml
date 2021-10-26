@@ -1,0 +1,65 @@
+server:
+  port: 8084
+  
+spring:
+  jmx:
+    enabled: true
+  application:
+    name: stkmarket-companydtlservice
+    version: 1.0
+  profiles:
+    active:
+    - local
+
+stockservice:
+  rest: 
+    timeout: 2000
+    readtimeout: 5000
+    resourceuri:
+      deletecompanystocks : /globalshares/ojha/stock/v1/delete/stock/cmpycde/{companycde}
+      getallcompanystocks : /globalshares/ojha/stock/v1/getall/stock
+      getcompanystocks : /globalshares/ojha/stock/v1/get/latest/stock/cmpycde/{companycde}
+      getstocksbyrange : /globalshares/ojha/stock/v1/get/stock/{companycde}/{startdate}/{enddate}
+      healthcheck: /globalshares/ojha/stock/v1/healthcheck
+
+---
+
+spring:
+  profiles: local
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:mysql:/localhost:3306/OJHA_DB
+    username: root
+    password: root
+
+stockservice:
+  rest: 
+    baseuri: http://localhost:8083
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka
+      
+---
+
+spring:
+  profiles: dev
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:mysql://myfirstmysql.ciugtlhxortq.ap-south-1.rds.amazonaws.com:3306/OJHA_DB
+    username: localuser
+    password: Localuser123
+
+stockservice:
+  rest: 
+    baseuri: http://localhost:8083
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka

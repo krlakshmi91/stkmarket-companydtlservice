@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<companyservice-errors>
+
+	<companyservice-error errorId="field.invalid" message=" - is invalid." code="10001"/>
+	<companyservice-error errorId="field.required" message=" - is required" code="10002"/>
+	<companyservice-error errorId="field.invalid.length" message=" - is invalid in length" code="10003"/>
+	<companyservice-error errorId="field.invalid.notallowed" message=" - invalid characters passed in value" code="10004"/>
+	<companyservice-error errorId="company.turnover.eligibility" message="Company is not eligible since the turnover is less than 10 crs" code="10005"/>
+	<companyservice-error errorId="company.stocklist.eligibility" message="Company must be listed in any of the Indian finance market" code="10006"/>
+	
+	<companyservice-error errorId="invalid.companycode" message="Invalid company code passed." code="10007"/>
+	
+	<companyservice-error errorId="downstream.error" message="Error Occured in DownStream systems" code="10010"/>
+	<companyservice-error errorId="downstream.nullresponse" message="Null response received from down stream" code="10011"/>
+	
+</companyservice-errors>

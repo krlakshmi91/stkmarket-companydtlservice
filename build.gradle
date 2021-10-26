@@ -1,19 +1,68 @@
-plugins {
-	id 'org.springframework.boot' version '2.4.12'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-	id 'java'
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	
+	ext {
+		springBootVersion = '2.4.5'
+		sonarqubeGradlePlugin = '2.8'
+	}
+	
+	dependencies {
+		classpath ("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath ("org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:${sonarqubeGradlePlugin}")
+	}
 }
 
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply from: file('gradle/swagger.gradle')
+apply from: file('gradle/sonar.gradle')
+
 group = 'com.stkmrkt'
-version = '0.0.1-SNAPSHOT'
+version = getVersion()
 sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
 
 repositories {
 	mavenCentral()
 }
 
+ext {
+	set('swggerVersion', "2.9.2")
+}
+
+// All dependencies used in the application
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
+
+	// Spring Dependencies
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	
+	// DataSource Dependencies
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'mysql:mysql-connector-java'
+
+	// Swagger Dependencies
+	implementation 'io.springfox:springfox-swagger2:2.9.2'
+	implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+	
+	// Lombok Dependencies
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	
+	// Junits Test Dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

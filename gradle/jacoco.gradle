@@ -1,0 +1,48 @@
+apply plugin: 'jacoco'
+
+jacoco {
+	toolVersion = "0.8.5"
+}
+
+jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			limit {
+				minimum = 0.7
+			}
+		}
+	}
+}
+
+test {
+	systemProperty "spring.profiles.active", "local"
+	jacoc {
+		destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+		classDumpDir = file("$buildDir/jacoco/classpathdumps")
+	}
+}
+
+jacocoTestReport {
+	afterEvaluate {
+		jacocoTestReport {
+			def coverageSourceDirs = ['src/main/java']
+			reports {
+				xml.enabled true
+				csv.enabled true
+				html.destination file("${buildDir}/reports/jacocoHtml")
+				xml.destination file("${buildDir}/reports/jacoco.xml")
+			}
+			sourceDirectories = files(coverageSourceDirs)
+			classDirectories = files(classDirectories.files.collect {
+				fileTree(dir: it,
+				exclude: [
+					'**/model/*',
+					'**/exception/*',
+					'**/constants/*'
+				])
+			})
+		}
+	}
+}
+
+test.finalizedBy jacocoTestReport

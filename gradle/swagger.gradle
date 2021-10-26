@@ -1,0 +1,25 @@
+apply plugin: "java"
+
+configurations {
+	swagger
+}
+
+dependencies {
+  	swagger "io.swagger:swagger-codegen-cli:2.2.2"
+}
+
+task genSwaggerForStockService(type: JavaExec) {
+	classpath = configurations.swagger
+	
+	main = "io.swagger.codegen.SwaggerCodegen"
+	def inputSpec = "$projectDir/src/main/resources/swagger/StockServiceSwagger.json"
+	
+	args = ['generate', '-l', 'java',
+			'--model-package', "com.stkmrkt.companydetails.model",
+			'--additional-properties', "serializableModel=true",
+			"-o", "build/swagger", "-i", "${inputSpec}"]
+	
+	jvmArgs = ["-Dmodels"]
+}
+
+compileJava.dependsOn genSwaggerForStockService
