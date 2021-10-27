@@ -1,5 +1,6 @@
 package com.stkmrkt.companydetails.serviceimpl;
 
+import static com.stkmrkt.companydetails.constants.Constants.COMPANY_CODE_EXISTS;
 import static com.stkmrkt.companydetails.constants.Constants.COMPANY_STOCKLIST_ELIGIBILITY;
 import static com.stkmrkt.companydetails.constants.Constants.COMPANY_TURNOVER_ELIGIBILITY;
 import static com.stkmrkt.companydetails.constants.Constants.FINANCE_MARKET_LIST;
@@ -35,6 +36,7 @@ public class CompanyDetailsServiceImpl implements CompanyDetailService {
 	@Override
 	public CompanyDetailsResponse registerCompany(CompanyDetailsRequest request) {
 		// Validate few parameters in the request
+		validateCompanyCode(request.getCompanyCode(), request);
 		validateCompanyTurnOver(request.getCompanyTurnover());
 		validateStockExchangeList(request.getStockExchangeList());
 
@@ -51,6 +53,16 @@ public class CompanyDetailsServiceImpl implements CompanyDetailService {
 		response.setResponseMsg("Company registered successfully");
 
 		return response;
+	}
+	
+	private void validateCompanyCode(Long companyCode, CompanyDetailsRequest request) {
+		CompanyDetailsEntity companyEntity = repository.findByCompanyCode(companyCode);
+		
+		if (null != companyEntity ) {
+			if (companyEntity.getCompanyName().contentEquals(request.getCompanyName())) {
+				throw new InputValidationException(COMPANY_CODE_EXISTS);
+			}
+		}
 	}
 	
 	private void validateStockExchangeList(List<String> stockExchangeList) {

@@ -32,6 +32,7 @@ public class Constants {
 	public static final String DOWNSTREAM_NULL_RESPONSE = "downstream.nullresponse";
 	public static final String COMPANY_TURNOVER_ELIGIBILITY = "company.turnover.eligibility";
 	public static final String COMPANY_STOCKLIST_ELIGIBILITY = "company.stocklist.eligibility";
+	public static final String COMPANY_CODE_EXISTS = "company.code.exists";
 	
 	public static final List<String> FINANCE_MARKET_LIST = Arrays.asList("NSE","BSE");
 	

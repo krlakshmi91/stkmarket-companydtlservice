@@ -27,7 +27,7 @@ public class CompanyDetailsRequest implements Serializable {
 	@InputValidateData(required = STRING_Y, regex = ALPHA_NUMERIC_REGEX, max = 255)
 	private String companyName;
 
-	@InputValidateData(required = STRING_Y, regex = ALPHA_REGEX, max = 100)
+	@InputValidateData(required = STRING_Y, regex = ALPHA_REGEX, max = 255)
 	private String companyCEO;
 
 	@InputValidateData(required = STRING_Y, regex = NUMERIC_DECIMEL_REGEX)

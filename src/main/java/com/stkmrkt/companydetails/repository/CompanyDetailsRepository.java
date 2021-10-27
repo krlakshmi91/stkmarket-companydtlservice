@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.stkmrkt.companydetails.entity.CompanyDetailsEntity;
 
-public interface CompanyDetailsRepository extends JpaRepository<CompanyDetailsEntity, Long>{
+public interface CompanyDetailsRepository extends JpaRepository<CompanyDetailsEntity, Long> {
+	
+	public CompanyDetailsEntity findByCompanyCode(Long companyCode);
 
 }

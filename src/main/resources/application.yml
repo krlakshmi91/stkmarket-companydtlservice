@@ -27,12 +27,13 @@ stockservice:
 spring:
   profiles: local
   jpa:
+    database: mysql
     hibernate:
       ddl-auto: none
   datasource:
-    url: jdbc:mysql:/localhost:3306/OJHA_DB
+    url: jdbc:mysql://localhost:3306/stkmrkt_db
     username: root
-    password: root
+    password: pass@word1
 
 stockservice:
   rest: 
