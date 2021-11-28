@@ -12,7 +12,7 @@ task genSwaggerForStockService(type: JavaExec) {
 	classpath = configurations.swagger
 	
 	main = "io.swagger.codegen.SwaggerCodegen"
-	def inputSpec = "$projectDir/src/main/resources/swagger/StockServiceSwagger.json"
+	def inputSpec = "$projectDir/src/main/resources/swagger/StockDetailsServiceSwagger.json"
 	
 	args = ['generate', '-l', 'java',
 			'--model-package', "com.stkmrkt.companydetails.model",

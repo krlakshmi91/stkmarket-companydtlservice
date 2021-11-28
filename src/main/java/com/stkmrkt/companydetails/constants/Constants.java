@@ -12,7 +12,7 @@ public class Constants {
 	public static final String UPDATE_COMPANY_STOCK_URI = "/stock/add/{companyCode}";
 	public static final String FETCH_COMPANY_STOCKS_BY_DATE_URI = "/stock/get/{companyCode}/{startDate}/{endDate}";
 	public static final String DELETE_COMPANY_URI = "/company/delete/{companyCode}";
-	public static final String COMPANY_DETAILS_CONTROLLER = "COMPANY DEATILS CONTROLLER";
+	public static final String COMPANY_DETAILS_CONTROLLER = "COMPANY DETAILS CONTROLLER";
 	
 	public static final String REQUEST_ID = "requestId";
 	public static final String STRING_Y = "Y";
@@ -33,6 +33,7 @@ public class Constants {
 	public static final String COMPANY_TURNOVER_ELIGIBILITY = "company.turnover.eligibility";
 	public static final String COMPANY_STOCKLIST_ELIGIBILITY = "company.stocklist.eligibility";
 	public static final String COMPANY_CODE_EXISTS = "company.code.exists";
+	public static final String INVALID_COMPANY_CODE = "invalid.companycode";
 	
 	public static final List<String> FINANCE_MARKET_LIST = Arrays.asList("NSE","BSE");
 	

@@ -23,7 +23,7 @@ apply from: file('gradle/swagger.gradle')
 apply from: file('gradle/sonar.gradle')
 
 group = 'com.stkmrkt'
-version = getVersion()
+version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 

@@ -1,0 +1,510 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Stock Detail service is used to manage stock details of a company.",
+    "title": "StockMarket Stock Detail Service"
+  },
+  "host": "localhost:8083",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "stock-details-controller",
+      "description": "Stock Details Controller"
+    }
+  ],
+  "paths": {
+    "/stockdetails/v1.0/market/delete/stock/companyCode/{companyCode}": {
+      "delete": {
+        "tags": [
+          "stock-details-controller"
+        ],
+        "summary": "/delete/stock/companyCode/{companyCode}",
+        "description": "This API is used to delete the stock detail of a compnay",
+        "operationId": "deleteCompanyStockUsingDELETE",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "HTTP_AUTH_TOKEN",
+            "in": "header",
+            "description": "JWT token header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "companyCode",
+            "in": "path",
+            "description": "companyCode",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stock detail deleted successfully",
+            "schema": {
+              "$ref": "#/definitions/StockDetailResponse"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stockdetails/v1.0/market/delete/stock/{stockId}": {
+      "delete": {
+        "tags": [
+          "stock-details-controller"
+        ],
+        "summary": "/delete/stock/{stockId}",
+        "description": "This API is used to delete the stock detail based on ID",
+        "operationId": "deleteStockByIdUsingDELETE",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "HTTP_AUTH_TOKEN",
+            "in": "header",
+            "description": "JWT token header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "stockId",
+            "in": "path",
+            "description": "stockId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stock detail deleted successfully",
+            "schema": {
+              "$ref": "#/definitions/StockDetailResponse"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stockdetails/v1.0/market/get/latest/stock/companyCode/{companyCode}": {
+      "get": {
+        "tags": [
+          "stock-details-controller"
+        ],
+        "summary": "/get/latest/stock/companyCode/{companyCode}",
+        "description": "This API is used to fetch all the stock detail based on company code",
+        "operationId": "getLatestStocksByCompanyCodeUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "HTTP_AUTH_TOKEN",
+            "in": "header",
+            "description": "JWT token header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "companyCode",
+            "in": "path",
+            "description": "companyCode",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stock detail selected successfully",
+            "schema": {
+              "$ref": "#/definitions/StockDetailResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stockdetails/v1.0/market/get/stock/companyCode/{companyCode}": {
+      "get": {
+        "tags": [
+          "stock-details-controller"
+        ],
+        "summary": "/get/stock/companyCode/{companyCode}",
+        "description": "This API is used to fetch all the stock detail based on company code",
+        "operationId": "getStocksByCompanyCodeUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "HTTP_AUTH_TOKEN",
+            "in": "header",
+            "description": "JWT token header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "companyCode",
+            "in": "path",
+            "description": "companyCode",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stock detail selected successfully",
+            "schema": {
+              "$ref": "#/definitions/StockDetailResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stockdetails/v1.0/market/get/stock/{companyCode}/{startDate}/{endDate}": {
+      "get": {
+        "tags": [
+          "stock-details-controller"
+        ],
+        "summary": "/get/stock/{companyCode}/{startDate}/{endDate}",
+        "description": "This API is used to get all the stock detail between a range of dates",
+        "operationId": "getStockByRangeUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "HTTP_AUTH_TOKEN",
+            "in": "header",
+            "description": "JWT token header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "companyCode",
+            "in": "path",
+            "description": "companyCode",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "endDate",
+            "in": "path",
+            "description": "endDate",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startDate",
+            "in": "path",
+            "description": "startDate",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stock detail selected successfully",
+            "schema": {
+              "$ref": "#/definitions/StockDetailResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stockdetails/v1.0/market/get/stock/{stockId}": {
+      "get": {
+        "tags": [
+          "stock-details-controller"
+        ],
+        "summary": "/get/stock/{stockId}",
+        "description": "This API is used to fetch the stock detail based on ID",
+        "operationId": "getStockByIdUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "HTTP_AUTH_TOKEN",
+            "in": "header",
+            "description": "JWT token header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "stockId",
+            "in": "path",
+            "description": "stockId",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stock detail selected successfully",
+            "schema": {
+              "$ref": "#/definitions/StockDetailResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stockdetails/v1.0/market/getAll/latest/stock": {
+      "get": {
+        "tags": [
+          "stock-details-controller"
+        ],
+        "summary": "/getAll/latest/stock",
+        "description": "This API is used to delete the stock detail based on ID",
+        "operationId": "getAllLatestStocksUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "HTTP_AUTH_TOKEN",
+            "in": "header",
+            "description": "JWT token header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stock detail deleted successfully",
+            "schema": {
+              "$ref": "#/definitions/StockDetailResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stockdetails/v1.0/market/getAll/stock": {
+      "get": {
+        "tags": [
+          "stock-details-controller"
+        ],
+        "summary": "/getAll/stock",
+        "description": "This API is used to delete the stock detail based on ID",
+        "operationId": "getAllStocksUsingGET",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "HTTP_AUTH_TOKEN",
+            "in": "header",
+            "description": "JWT token header",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stock detail deleted successfully",
+            "schema": {
+              "$ref": "#/definitions/StockDetailResponse"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/stockdetails/v1.0/market/save/stock": {
+      "post": {
+        "tags": [
+          "stock-details-controller"
+        ],
+        "summary": "/save/stock",
+        "description": "This API is used to save the stock detail of a compnay",
+        "operationId": "saveCompanyDataUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "HTTP_AUTH_TOKEN",
+            "in": "header",
+            "description": "JWT token header",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "StockDetailRequest",
+            "description": "Request Body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StockDetailRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stock detail saved successfully",
+            "schema": {
+              "$ref": "#/definitions/StockDetailResponse"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "definitions": {
+    "StockDetailEntity": {
+      "type": "object",
+      "properties": {
+        "companyCode": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "stockPrice": {
+          "type": "number",
+          "format": "double"
+        },
+        "stockUpdtTms": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "title": "StockDetailEntity"
+    },
+    "StockDetailRequest": {
+      "type": "object",
+      "properties": {
+        "companyCode": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "stockPrice": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "title": "StockDetailRequest"
+    },
+    "StockDetailResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "responseID": {
+          "type": "string"
+        },
+        "responseMsg": {
+          "type": "string"
+        },
+        "stockDetail": {
+          "$ref": "#/definitions/StockDetailEntity"
+        },
+        "stockDetails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StockDetailEntity"
+          }
+        }
+      },
+      "title": "StockDetailResponse"
+    }
+  }
+}

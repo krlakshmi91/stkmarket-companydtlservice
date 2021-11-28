@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
+import com.stkmrkt.companydetails.client.StockServiceClient;
+import com.stkmrkt.companydetails.client.impl.StockServiceClientImpl;
 import com.stkmrkt.companydetails.util.CompanyDetailResponseMapper;
 import com.stkmrkt.companydetails.util.CompanyDetailsUtil;
 
@@ -23,5 +25,10 @@ public class CompanyDetailConfig {
 	@Bean
 	public CompanyDetailResponseMapper companyDetailResponseMapper() {
 		return new CompanyDetailResponseMapper();
+	}
+	
+	@Bean
+	public StockServiceClient stockServiceClient() {
+		return new StockServiceClientImpl();
 	}
 }
